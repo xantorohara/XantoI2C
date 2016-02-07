@@ -1,3 +1,3 @@
 # XantoI2C
 
-![Timings diagram ](/resources/XantoI2C-timings.svg?raw=true)
+![Timings diagram ](https://github.com/xantorohara/XantoI2C/raw/master/resources/XantoI2C-timings.svg?raw=true)
