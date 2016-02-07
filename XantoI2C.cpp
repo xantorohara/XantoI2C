@@ -27,6 +27,7 @@ void XantoI2C::init() {
 }
 
 /**
+ * Before: SCL is any, SDA is any
  * After: SCL is low, SDA is low
  */
 void  XantoI2C::off() {
@@ -86,7 +87,7 @@ void XantoI2C::writeByte(uint8_t data_byte) {
 }
 
 /**
- * Before: SDA in INPUT_PULLUP mode
+ * Before: SDA is in INPUT_PULLUP mode
  */
 uint8_t XantoI2C::readBit() {
   uint8_t out_bit;
@@ -115,9 +116,9 @@ uint8_t XantoI2C::readByte() {
 /**
  * Before: SCL is low, SDA is any
  * After: SCL is low, SDA is any
- * Return 0 if ACK received, else 1
+ * Return 0 if ACK was received, else 1
  */
-uint8_t XantoI2C::ack() {
+uint8_t XantoI2C::readAck() {
   pinMode(data_pin, INPUT_PULLUP);
   uint8_t tmp_bit = readBit();
   pinMode(data_pin, OUTPUT);
@@ -127,36 +128,40 @@ uint8_t XantoI2C::ack() {
 /**
  * Before: SCL is low, SDA is any
  * After: SCL is low, SDA is any
- * Return 0 if NACK received, else 1
+ * Return 0 if NACK was received, else 1
  */
-uint8_t XantoI2C::nack() {
+uint8_t XantoI2C::readNack() {
   pinMode(data_pin, INPUT_PULLUP);
   uint8_t tmp_bit = readBit();
   pinMode(data_pin, OUTPUT);
   return tmp_bit == 1 ? 0 : 1;
 }
 
+/**
+ * Return 0 if all steps were executed, else 1
+ */
 uint8_t XantoI2C::doStartWriteAckStop(uint8_t data_byte) {
   start();
   writeByte(data_byte);
 
-  if (ack()) {
+  if (readAck()) {
     return 1;
   }
   stop();
   return 0;
 }
 
+/**
+ * Return 0 if all steps were executed, else 1
+ */
 uint8_t XantoI2C::doStartWriteAckStop(uint8_t data_bytes[], uint8_t data_length) {
   start();
   for (uint8_t i = 0; i < data_length; i++) {
-    Serial.print(i);
     writeByte(data_bytes[i]);
-    if (ack()) {
+    if (readAck()) {
       return 1;
     }
   }
-  Serial.println();
   stop();
   return 0;
 }

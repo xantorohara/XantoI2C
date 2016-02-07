@@ -1,23 +1,24 @@
 /**
- * Software I2C implementation for Arduino
+ * XantoI2C
+ * Software I2C library implementation for Arduino
  *
- * Version: 2016-01-31
- * Author: Alex Bell (xantorohara@gmail.com)
+ * Version: 1.0.1
+ * Author: Xantorohara <xantorohara@gmail.com>
+ *
  * References:
- * ----------
+ * -----------
  * - http://i2c.info/i2c-bus-specification
  * - http://www.i2c-bus.org/repeated-start-condition
  * - http://www.esacademy.com/en/library/technical-articles-and-documents/miscellaneous/i2c-bus/i2c-bus-events
  * - TM1637 datasheeet
  * - KT0803L datasheet
  *
- *
  * Bus Speed:
  * ----------
- * XantoI2C uses delays with a microsecond precision,
- * so the bus speed will be not exactly the same as specified in the constructor.
+ * XantoI2C uses delays with microsecond precision, so the bus speed will
+ * not be exactly the same as specified in the constructor, it will be slowly.
  *
- * Here are samples of speed ranges:
+ * Here are some samples of speed ranges:
  *
  * 1kHz - pulse=500us,delay=250us
  * 2kHz - pulse=250us,delay=125us
@@ -35,8 +36,21 @@
  * 250-499kHz - pulse=2us,delay=1us
  * >500kHz - pulse=1us, delay=1us
  *
+ * I.e. if you specify speed as 120kHz or 110kHz or 101kHz it will be reduced to 100kHz.
+ *
  * Actually, many chips don't require strict speed for I2C communucation.
  * They declare maximal or nominal speed, but can operate on much lower speeds.
+ *
+ * Advantages:
+ * -----------
+ * - Pure Arduino/C++ code
+ * - No ASM, no magic, just plain clear code corresponding to the timing diagram
+ * - It can communicate with I2C chips using any Arduino's pins,
+ *   not only those that are marked as SDA and SCL
+ * - It can be configured to work with unusual latency or propagation time,
+ *   when you have too long wires, capacitors or repeaters on the line,
+ *   or if you just use a barbwire instead of wires
+ *
  */
 
 #ifndef XANTO_I2C
@@ -50,50 +64,45 @@ class XantoI2C {
     uint8_t clock_pin, data_pin;
 
     /**
-     * Initialize SCL and SDA lines.
-     * As a result, both lines are output HIGH.
+     * Initialize SCL and SDA lines
      */
     void init();
 
     /**
-     * Clock pulse: set the SCL line HIGH, wait pulse_time, set it LOW, wait delay_time
+     * Clock pulse
      */
     void clockPulse();
-    
+
+    /**
+     * Read a bit of data from a slave
+     */
     uint8_t readBit();
-    
+
   public:
     uint16_t pulse_time_us, delay_time_us;
 
     /**
-     * Create new I2C bus with the given speed
+     * Create a new I2C bus with the given speed
      *
-     * data_pin - any digital pin for SDA line
      * clock_pin - any digital pin for SCL line
+     * data_pin - any digital pin for SDA line
      * speed - bus speed in kilohertz (see "Bus Speed" section for speed explanations)
      */
     XantoI2C(uint8_t clock_pin, uint8_t data_pin, uint16_t speed_kHz = 100);
 
     /**
-     * Create new I2C bus with the given delay times
+     * Create a new I2C bus with the given delay times
      *
-     * data_pin - any digital pin for SDA line
      * clock_pin - any digital pin for SCL line
-     * pulse_time_us - time when clock line is HIGH
+     * data_pin - any digital pin for SDA line
+     * pulse_time_us - time when clock pulse is HIGH
      * delay_time_us - time of signal propagation, actually it is a half of a pulse time
-     *
-     * You can use this constructor to create and tune the bus for some specifics cases
-     * (unusual latency or propagation time,  capacitors or repeaters on the line,
-     * or if you just use a barbwire instead of wires)
      */
     XantoI2C(uint8_t clock_pin, uint8_t data_pin, uint16_t pulse_time_us, uint16_t delay_time_us);
 
-
     /**
-     * Start Condition
-     * or 
-     * Repeated Start Condition
-     * First pulls the SDA line low, and next pulls the SCL  line low.
+     * Start Condition (or Repeated Start Condition)
+     * First pulls the SDA line low, and next pulls the SCL line low.
      */
     void start();
 
@@ -110,26 +119,35 @@ class XantoI2C {
      */
     void writeByte(uint8_t data_byte);
 
+    /**
+     * Read one byte of data from a slave
+     */
     uint8_t readByte();
 
-    uint8_t ack();
-    
-    uint8_t nack();
+    /**
+     * Read Acknowledge from a slave
+     * Return 0 if ACK was received, else 1
+     */
+    uint8_t readAck();
 
+    /**
+    * Read No Acknowledge from a slave
+    * Return 0 if NACK was received, else 1
+    */
+    uint8_t readNack();
 
     /**
      * Pull both lines down, switch I2C communication off
      */
     void off();
 
-
     /**
-     * Execute common scenario: start, write, ack, then stop
+     * Execute common scenario: start, write, ack and stop
      */
     uint8_t doStartWriteAckStop(uint8_t data_byte);
 
     /**
-     * Execute common scenario: start, multiple writes with acks, then stop
+     * Execute common scenario: start, multiple writes with acks and stop
      */
     uint8_t doStartWriteAckStop(uint8_t data_bytes[], uint8_t data_length);
 
