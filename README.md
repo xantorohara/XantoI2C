@@ -9,9 +9,9 @@ Serial Data Line (SDA) and Serial Clock Line (SCL)
 ![Timings diagram ](https://github.com/xantorohara/XantoI2C/raw/master/extras/XantoI2C-timings.png?raw=true)
 
 ## Examples
-* [Xanto_TM1637_Counter](https://github.com/xantorohara/XantoI2C/tree/master/examples/Xanto_TM1637_Counter) - example 
+* [XantoI2C_TM1637_Counter](https://github.com/xantorohara/XantoI2C/tree/master/examples/XantoI2C_TM1637_Counter) - example 
 how to drive a 4-digit LED display module using XantoI2C
-* [Xanto_KT0803L_Registers](https://github.com/xantorohara/XantoI2C/tree/master/examples/Xanto_KT0803L_Registers) - 
+* [XantoI2C_KT0803L_Registers](https://github.com/xantorohara/XantoI2C/tree/master/examples/XantoI2C_KT0803L_Registers) - 
 example how to read all registers from the KT0803L chip (FM transmitter module)
 
 ## Related projects
