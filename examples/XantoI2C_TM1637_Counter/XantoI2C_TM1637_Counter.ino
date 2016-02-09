@@ -1,3 +1,11 @@
+/**
+ * This is an example of usage XantoI2C for communicating with TM1637 chip.
+ * This code demonstrates displaying numbers on a 4-digit LED display.
+ * 
+ * Author: Xantorohara <xantorohara@gmail.com>
+ * Url: https://github.com/xantorohara/XantoI2C/tree/master/examples/XantoI2C_TM1637_Counter
+ */
+
 #include "XantoI2C.h"
 
 const uint8_t PIN_DISPLAY_CLK = 5;
@@ -54,12 +62,19 @@ void displayNumber(uint16_t number, uint8_t display_point = 0) {
   i2c.doStartWriteAckStop(0xF1);
 }
 
-void setup() {
-  // display all digits
+/**
+ * Test all digits.
+ * Output demo sequence: 1111, 2222, 3333, ..., 9999
+ */
+void testDisplay() {
   for (uint8_t i = 0; i < 10; i++) {
-    displayNumber(i*1111);
-    delay(1000);    
+    displayNumber(i * 1111);
+    delay(1000);
   }
+}
+
+void setup() {
+  testDisplay();
 }
 
 void loop() {
