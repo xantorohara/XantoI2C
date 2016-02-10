@@ -1,6 +1,7 @@
 # XantoI2C 
 Software I2C library implementation for Arduino
 
+
 ## Quick start
 1. Download this library: [XantoI2C-master.zip](https://github.com/xantorohara/XantoI2C/archive/master.zip)
 2. Install the library (for example, via Arduino IDE: Sketch -> Include Library -> Add .ZIP Library...)
@@ -35,6 +36,7 @@ void loop() {
 }
 ```
 
+
 ## About XantoI2C
 Simple software I2C-master implementation.
 Like any other I2C it uses two wires to communicate with slave devices:
@@ -44,11 +46,12 @@ But it is not limited to the use of Arduino's special SDA/SCL pins, you can use 
 Features:
 * Pure Arduino/C++ code
 * No ASM, no magic, just plain clear code corresponding to the timing diagram
-* It can communicate with I2C chips using **any** Arduino's pins, not only those that are marked as SDA and SCL,
-so you can connect many more I2C devices to Arduino at the same time.
+* It can communicate with I2C chips using any Arduino's pins, not only those that are marked as SDA and SCL,
+so you can connect many more I2C devices to the Arduino at the same time.
 * It can be configured to work with unusual latency or propagation time,
 for example when you have too long wires, capacitors, amplifiers or repeaters on the line,
 or if you just use a barbed wires instead of copper wires
+
 
 ## Timings diagram
 This pictures demonstrates some I2C cases. Also it shows signal timings (pulse time, delay time). 
@@ -157,6 +160,7 @@ uint8_t doStartWriteAckStop(uint8_t data_bytes[], uint8_t data_length);
 
 ```
 
+
 ### Sample: create instance of the I2C bus
 ```cpp
 XantoI2C i2c(PIN_SCL, PIN_SDA);
@@ -168,6 +172,7 @@ XantoI2C i2c(PIN_SCL, PIN_SDA);
   i2c.doStartWriteAckStop(0x77);
   
 ```
+
 
 ### Sample: reading register value from a KT0803 chip
 ```cpp
@@ -200,15 +205,18 @@ XantoI2C i2c(PIN_SCL, PIN_SDA);
 
 ```
 
+
 ## Examples
 * [XantoI2C_TM1637_Counter](https://github.com/xantorohara/XantoI2C/tree/master/examples/XantoI2C_TM1637_Counter) - example 
 how to drive a 4-digit LED display module using XantoI2C
 * [XantoI2C_KT0803L_Registers](https://github.com/xantorohara/XantoI2C/tree/master/examples/XantoI2C_KT0803L_Registers) - 
 example how to read all registers from the KT0803L chip (FM transmitter module)
 
+
 ## Related projects
 * [XantoTM1637](https://github.com/xantorohara/XantoTM1637) - a library for a "Digital Tube" (4-digit display module).
 XantoTM1637 uses XantoI2C library for I2C communications with TM1637 chip.
+
   
 ## References
 * [I2C Bus Specification](http://i2c.info/i2c-bus-specification)
@@ -216,6 +224,7 @@ XantoTM1637 uses XantoI2C library for I2C communications with TM1637 chip.
 * [I2C Bus Events](http://www.esacademy.com/en/library/technical-articles-and-documents/miscellaneous/i2c-bus/i2c-bus-events)
 * :blue_book: [TM1637 datasheeet (English version)](http://xantorohara.github.io/datasheets/TM1637_V2.4_EN.pdf)
 * :blue_book: [KT0803L datasheeet](http://xantorohara.github.io/datasheets/KT0803L.pdf)
+
 
 ## Author
 Xantorohara <xantorohara@gmail.com>
