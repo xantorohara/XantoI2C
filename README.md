@@ -10,9 +10,9 @@ Serial Data Line (SDA) and Serial Clock Line (SCL)
 
 ## Class API
 
-XantoI2C class methods
+### XantoI2C class methods
 
-```c
+```cpp
 
 /**
  * Create a new I2C bus with the given speed
@@ -47,7 +47,7 @@ void stop();
 
 /**
  * For each clock pulse one bit of data is transferred.
- * The SDA signal can only change when the SCL signal is low –
+ * The SDA signal can only change when the SCL signal is low ï¿½
  * when the clock is high the data should be stable.
  */
 void writeByte(uint8_t data_byte);
@@ -68,10 +68,11 @@ uint8_t readAck();
 * Return 0 if NACK was received, else 1
 */
 uint8_t readNack();
+
 ```
 
 Also it includes couple of common scenarios:
-```c
+```cpp
 
 /**
  * Execute common scenario: start, write, ack and stop
@@ -82,6 +83,51 @@ uint8_t doStartWriteAckStop(uint8_t data_byte);
  * Execute common scenario: start, multiple writes with acks and stop
  */
 uint8_t doStartWriteAckStop(uint8_t data_bytes[], uint8_t data_length);
+
+```
+
+### Create instance
+
+```cpp
+XantoI2C i2c(PIN_SCL, PIN_SDA, 400);
+
+```
+### Usage1
+
+```cpp
+
+  i2c.doStartWriteAckStop(0x02);
+  
+```
+
+### Usage2
+```cpp
+
+  i2c.start();
+
+  i2c.writeByte(KT0803_CMD_WRITE);
+
+  if (i2c.readAck()) {
+    return 0;
+  }
+
+  i2c.writeByte(register_address);
+
+  if (i2c.readAck()) {
+    return 0;
+  }
+
+  i2c.start();
+  i2c.writeByte(KT0803_CMD_READ);
+  if (i2c.readAck()) {
+    return 0;
+  }
+  uint8_t register_value = i2c.readByte();
+
+  if (i2c.readNack()) {
+    return 0;
+  }
+  i2c.stop();
 
 ```
 
