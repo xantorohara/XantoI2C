@@ -36,20 +36,24 @@ void loop() {
 ```
 
 ## About XantoI2C
-Software I2C-master implementation.
+Simple software I2C-master implementation.
+Like any other I2C it uses two wires to communicate with slave devices:
+Serial Data Line (SDA) and Serial Clock Line (SCL). 
+But it is not limited to the use of Arduino's special SDA/SCL pins, you can use **any** pins.
 
 Features:
 * Pure Arduino/C++ code
 * No ASM, no magic, just plain clear code corresponding to the timing diagram
-* It can communicate with I2C chips using **any** Arduino's pins, not only those that are marked as SDA and SCL
+* It can communicate with I2C chips using **any** Arduino's pins, not only those that are marked as SDA and SCL,
+so you can connect many more I2C devices to Arduino at the same time.
 * It can be configured to work with unusual latency or propagation time,
 for example when you have too long wires, capacitors, amplifiers or repeaters on the line,
-or if you just use a barbed wires instead of copper wires.
+or if you just use a barbed wires instead of copper wires
 
 ## Timings diagram
+This pictures demonstrates some I2C cases. Also it shows signal timings (pulse time, delay time). 
+ 
 ![Timings diagram](https://github.com/xantorohara/XantoI2C/raw/master/extras/XantoI2C-timings.png?raw=true)
-
-Serial Data Line (SDA) and Serial Clock Line (SCL)
 
 
 ## Bus Speed
@@ -214,4 +218,4 @@ XantoTM1637 uses XantoI2C library for I2C communications with TM1637 chip.
 * :blue_book: [KT0803L datasheeet](http://xantorohara.github.io/datasheets/KT0803L.pdf)
 
 ## Author
-Xantorohara <xantorohara@gmail.com>, @xantorohara
+Xantorohara <xantorohara@gmail.com>

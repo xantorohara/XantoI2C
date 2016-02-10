@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="550px" height="400px">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="532px" height="302px">
     <style type="text/css">
         <![CDATA[
 
         svg {
             shape-rendering: crispEdges;
             font-family:monospace;
+        }
+
+        .copyright {
+            font-size:6px;
+            fill:#808080;
+            alignment-baseline: central;
+
         }
 
         .line path {
@@ -33,8 +40,16 @@
             alignment-baseline: central;
         }
 
+        .line text.caption {
+            font-size:6px;
+        }
+
         .line text.sda {
             fill:limegreen;
+        }
+
+        .line text.sda-slave {
+            fill:red;
         }
 
         .line text.scl {
@@ -95,13 +110,16 @@
     <rect width="100%" height="100%" fill="url(#grid)"/>
 
     <g class="line" transform="translate(0, 0)">
+        <text class="caption" x="10" y="95">Picture 1</text>
+
         <text class="sda" x="0" y="25">SDA</text>
         <text class="scl" x="0" y="55">SCL</text>
+        <text class="sda-slave" x="415" y="25">SDA slave</text>
 
         <g name="start" transform="translate(0, 0)">
             <g class="code" transform="translate(30, 10)">
                 <text x="25" y="75">start()</text>
-                <rect x="0" y="0" width="70" height="70"/>
+                <rect x="0" y="0" width="70" height="80"/>
             </g>
 
             <path class="sda" d="M 20 20 h40 v20 h40"/>
@@ -117,7 +135,7 @@
         <g name="write" transform="translate(100, 0)">
             <g class="code" transform="translate(0, 10)">
                 <text x="160" y="75">writeByte(0b10101100)</text>
-                <rect x="0" y="0" width="320" height="70"/>
+                <rect x="0" y="0" width="320" height="80"/>
 
                 <text x="20" y="45">1</text>
                 <text x="60" y="45">0</text>
@@ -141,7 +159,7 @@
         <g name="ack" transform="translate(420, 0)">
             <g class="code" transform="translate(0, 10)">
                 <text x="25" y="75">ack()</text>
-                <rect x="0" y="0" width="40" height="70"/>
+                <rect x="0" y="0" width="40" height="80"/>
             </g>
 
             <path name="ackSlave" class="sda slave" d="M -2 40 h40"/>
@@ -155,7 +173,7 @@
 
         <g name="stop" transform="translate(460, 0)">
             <g class="code" transform="translate(0, 10)">
-                <rect x="0" y="0" width="60" height="70"/>
+                <rect x="0" y="0" width="60" height="80"/>
                 <text x="25" y="75">stop()</text>
             </g>
 
@@ -169,14 +187,16 @@
         </g>
     </g>
 
-    <g class="line" transform="translate(0, 90)">
+    <g class="line" transform="translate(0, 100)">
+        <text class="caption" x="10" y="95">Picture 2</text>
+
         <text class="sda" x="0" y="25">SDA</text>
         <text class="scl" x="0" y="55">SCL</text>
 
         <g name="start" transform="translate(0, 0)">
             <g class="code" transform="translate(30, 10)">
                 <text x="25" y="75">start()</text>
-                <rect x="0" y="0" width="70" height="70"/>
+                <rect x="0" y="0" width="70" height="80"/>
             </g>
 
             <path name="start" class="sda" d="M 20 40 h10 v-20 h30 v20 h40"/>
@@ -191,7 +211,7 @@
         <g name="ack" transform="translate(420, 0)">
             <g class="code" transform="translate(0, 10)">
                 <text x="25" y="75">ack()</text>
-                <rect x="0" y="0" width="40" height="70"/>
+                <rect x="0" y="0" width="40" height="80"/>
             </g>
 
             <path name="ackSlave" class="sda slave" d="M -2 20 v20 h40 v-20"/>
@@ -204,7 +224,7 @@
 
         <g name="stop" transform="translate(460, 0)">
             <g class="code" transform="translate(0, 10)">
-                <rect x="0" y="0" width="60" height="70"/>
+                <rect x="0" y="0" width="60" height="80"/>
                 <text x="25" y="75">stop()</text>
             </g>
 
@@ -219,14 +239,16 @@
 
     </g>
 
-    <g class="line" transform="translate(0, 170)">
+    <g class="line" transform="translate(0, 200)">
+        <text class="caption" x="10" y="95">Picture 3</text>
+
         <text class="sda" x="0" y="25">SDA</text>
         <text class="scl" x="0" y="55">SCL</text>
 
         <g name="start" transform="translate(0, 0)">
             <g class="code" transform="translate(30, 10)">
                 <text x="25" y="75">start()</text>
-                <rect x="0" y="0" width="70" height="70"/>
+                <rect x="0" y="0" width="70" height="80"/>
             </g>
 
             <path name="start" class="sda" d="M 20 20 h40 v20 h40"/>
@@ -239,6 +261,8 @@
 
         </g>
     </g>
+
+    <text class="copyright" x="455" y="5" style="">XantoI2C &#169;Xantorohara</text>
 
 
 </svg>
