@@ -142,12 +142,12 @@ class XantoI2C {
     void off();
 
     /**
-     * Execute common scenario: start, write, ack and stop
+     * Execute scenario: start, write, ack and stop
      */
     uint8_t doStartWriteAckStop(uint8_t data_byte);
 
     /**
-     * Execute common scenario: start, multiple writes with acks and stop
+     * Execute scenario: start, multiple writes with acks and stop
      */
     uint8_t doStartWriteAckStop(uint8_t data_bytes[], uint8_t data_length);
 

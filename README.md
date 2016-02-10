@@ -2,11 +2,11 @@
 Software I2C library implementation for Arduino
 
 ## Quick start
-1. Download this library [XantoI2C-master.zip](https://github.com/xantorohara/XantoI2C/archive/master.zip)
+1. Download this library: [XantoI2C-master.zip](https://github.com/xantorohara/XantoI2C/archive/master.zip)
 2. Install the library (for example, via Arduino IDE: Sketch -> Include Library -> Add .ZIP Library...)
 3. Write code that you need to interact with your chip using XantoI2C
 
-This dummy example demonstrates basic usage of the library:
+This dummy sample demonstrates basic usage of the library:
 
 ```cpp
 #include <XantoI2C.h>
@@ -35,15 +35,44 @@ void loop() {
 }
 ```
 
-##  
+## About XantoI2C
+
+## Bus Speed
+
+XantoI2C uses delays with microsecond precision, so the bus speed will
+not be exactly the same as specified in the constructor, it will be a bit slowly.
+
+Here are some samples of speed ranges:
+* 1kHz - pulse=500us,delay=250us
+* 2kHz - pulse=250us,delay=125us
+* 5kHz - pulse=100us,delay=50us
+* 10kHz - pulse=50us,delay=25us
+* 25-26kHz - pulse=20us,delay=10us
+* 50-55kHz - pulse=10us,delay=5us
+* 56-62kHz - pulse=9us,delay=5us
+* 63-71kHz - pulse=8us,delay=4us
+* 72-83kHz - pulse=7us,delay=4us
+* 84-99kHz - pulse=6us,delay=3us
+* 100-124kHz - pulse=5us,delay=3us
+* 125-166kHz - pulse=4us,delay=2us
+* 167-249kHz - pulse=3us,delay=2us
+* 250-499kHz - pulse=2us,delay=1us
+* >500kHz - pulse=1us, delay=1us
+
+I.e. if you specify speed as 120kHz or 110kHz or 101kHz it will be reduced to 100kHz.
+
+Actually, many chips don't require strict speed for I2C communucation.
+They declare maximal or nominal speed, but can operate on much lower speeds.
+
+
 
 Serial Data Line (SDA) and Serial Clock Line (SCL)
 
 ![Timings diagram ](https://github.com/xantorohara/XantoI2C/raw/master/extras/XantoI2C-timings.png?raw=true)
 
-## XantoI2C Class API
+## Class API
 
-### Class methods
+### Methods
 
 ```cpp
 
@@ -104,36 +133,36 @@ uint8_t readNack();
 
 ```
 
-Also it includes couple of common scenarios:
+Also XantoI2C includes some helper methods for frequently used scenarios:
 ```cpp
 
 /**
- * Execute common scenario: start, write, ack and stop
+ * Execute scenario: start, write, ack and stop
  */
 uint8_t doStartWriteAckStop(uint8_t data_byte);
 
 /**
- * Execute common scenario: start, multiple writes with acks and stop
+ * Execute scenario: start, multiple writes with acks and stop
  */
 uint8_t doStartWriteAckStop(uint8_t data_bytes[], uint8_t data_length);
 
 ```
 
-### Create instance
+### Create instance of the I2C bus
 
 ```cpp
 XantoI2C i2c(PIN_SCL, PIN_SDA, 400);
 
 ```
-### Usage1
+### Sample: using a helper method
 
 ```cpp
 
-  i2c.doStartWriteAckStop(0x02);
+  i2c.doStartWriteAckStop(0x77);
   
 ```
 
-### Usage2
+### Sample: reading register value from a KT0803 chip
 ```cpp
 
   i2c.start();
@@ -178,5 +207,5 @@ XantoTM1637 uses XantoI2C library for I2C communications with TM1637 chip.
 * [I2C Bus Specification](http://i2c.info/i2c-bus-specification)
 * [I2C-Bus](http://www.i2c-bus.org)
 * [I2C Bus Events](http://www.esacademy.com/en/library/technical-articles-and-documents/miscellaneous/i2c-bus/i2c-bus-events)
-* :book: [TM1637 datasheeet (English version)](http://xantorohara.github.io/datasheets/TM1637_V2.4_EN.pdf)
-* :book: [KT0803L datasheeet (English version)](http://xantorohara.github.io/datasheets/KT0803L.pdf)
+* :blue_book: [TM1637 datasheeet (English version)](http://xantorohara.github.io/datasheets/TM1637_V2.4_EN.pdf)
+* :blue_book: [KT0803L datasheeet (English version)](http://xantorohara.github.io/datasheets/KT0803L.pdf)
