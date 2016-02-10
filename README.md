@@ -1,6 +1,4 @@
 # XantoI2C 
-## :construction: Work in progress :construction:
-
 Software I2C library implementation for Arduino
 
 ## Quick start
@@ -36,6 +34,8 @@ void setup() {
 void loop() {
 }
 ```
+
+##  
 
 Serial Data Line (SDA) and Serial Clock Line (SCL)
 
@@ -174,3 +174,9 @@ example how to read all registers from the KT0803L chip (FM transmitter module)
 * [XantoTM1637](https://github.com/xantorohara/XantoTM1637) - a library for a "Digital Tube" (4-digit display module).
 XantoTM1637 uses XantoI2C library for I2C communications with TM1637 chip.
   
+## References
+* [I2C Bus Specification](http://i2c.info/i2c-bus-specification)
+* [I2C-Bus](http://www.i2c-bus.org)
+* [I2C Bus Events](http://www.esacademy.com/en/library/technical-articles-and-documents/miscellaneous/i2c-bus/i2c-bus-events)
+* :book: [TM1637 datasheeet (English version)](http://xantorohara.github.io/datasheets/TM1637_V2.4_EN.pdf)
+* :book: [KT0803L datasheeet (English version)](http://xantorohara.github.io/datasheets/KT0803L.pdf)
