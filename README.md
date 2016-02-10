@@ -37,6 +37,21 @@ void loop() {
 
 ## About XantoI2C
 
+Software I2C-master implementation.
+
+Features:
+* Pure Arduino/C++ code
+* No ASM, no magic, just plain clear code corresponding to the timing diagram
+* It can communicate with I2C chips using **any** Arduino's pins, not only those that are marked as SDA and SCL
+* It can be configured to work with unusual latency or propagation time,
+for example when you have too long wires, capacitors, amplifiers or repeaters on the line,
+or if you just use a barbed wires instead of copper wires.
+
+![Timings diagram ](https://github.com/xantorohara/XantoI2C/raw/master/extras/XantoI2C-timings.png?raw=true)
+
+Serial Data Line (SDA) and Serial Clock Line (SCL)
+
+
 ## Bus Speed
 
 XantoI2C uses delays with microsecond precision, so the bus speed will
@@ -64,15 +79,7 @@ I.e. if you specify speed as 120kHz or 110kHz or 101kHz it will be reduced to 10
 Actually, many chips don't require strict speed for I2C communucation.
 They declare maximal or nominal speed, but can operate on much lower speeds.
 
-
-
-Serial Data Line (SDA) and Serial Clock Line (SCL)
-
-![Timings diagram ](https://github.com/xantorohara/XantoI2C/raw/master/extras/XantoI2C-timings.png?raw=true)
-
 ## Class API
-
-### Methods
 
 ```cpp
 
@@ -148,10 +155,10 @@ uint8_t doStartWriteAckStop(uint8_t data_bytes[], uint8_t data_length);
 
 ```
 
-### Create instance of the I2C bus
+### Sample: create instance of the I2C bus
 
 ```cpp
-XantoI2C i2c(PIN_SCL, PIN_SDA, 400);
+XantoI2C i2c(PIN_SCL, PIN_SDA);
 
 ```
 ### Sample: using a helper method
@@ -208,4 +215,4 @@ XantoTM1637 uses XantoI2C library for I2C communications with TM1637 chip.
 * [I2C-Bus](http://www.i2c-bus.org)
 * [I2C Bus Events](http://www.esacademy.com/en/library/technical-articles-and-documents/miscellaneous/i2c-bus/i2c-bus-events)
 * :blue_book: [TM1637 datasheeet (English version)](http://xantorohara.github.io/datasheets/TM1637_V2.4_EN.pdf)
-* :blue_book: [KT0803L datasheeet (English version)](http://xantorohara.github.io/datasheets/KT0803L.pdf)
+* :blue_book: [KT0803L datasheeet](http://xantorohara.github.io/datasheets/KT0803L.pdf)
