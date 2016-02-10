@@ -169,7 +169,7 @@ XantoI2C i2c(PIN_SCL, PIN_SDA);
 ### Sample: using a helper method
 ```cpp
 
-  i2c.doStartWriteAckStop(0x77);
+i2c.doStartWriteAckStop(0x77);
   
 ```
 
@@ -177,34 +177,35 @@ XantoI2C i2c(PIN_SCL, PIN_SDA);
 ### Sample: reading register value from a KT0803 chip
 ```cpp
 
-  i2c.start();
+i2c.start();
 
-  i2c.writeByte(KT0803_CMD_WRITE);
+i2c.writeByte(KT0803_CMD_WRITE);
 
-  if (i2c.readAck()) {
-    return 0;
-  }
+if (i2c.readAck()) {
+return 0;
+}
 
-  i2c.writeByte(register_address);
+i2c.writeByte(register_address);
 
-  if (i2c.readAck()) {
-    return 0;
-  }
+if (i2c.readAck()) {
+return 0;
+}
 
-  i2c.start();
-  i2c.writeByte(KT0803_CMD_READ);
-  if (i2c.readAck()) {
-    return 0;
-  }
-  uint8_t register_value = i2c.readByte();
+i2c.start();
+i2c.writeByte(KT0803_CMD_READ);
+if (i2c.readAck()) {
+return 0;
+}
+uint8_t register_value = i2c.readByte();
 
-  if (i2c.readNack()) {
-    return 0;
-  }
-  i2c.stop();
+if (i2c.readNack()) {
+return 0;
+}
+i2c.stop();
 
 ```
-
+## I2C devices
+- [ ] TODO
 
 ## Examples
 * [XantoI2C_TM1637_Counter](https://github.com/xantorohara/XantoI2C/tree/master/examples/XantoI2C_TM1637_Counter) - example 
