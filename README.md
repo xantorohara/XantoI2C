@@ -36,7 +36,6 @@ void loop() {
 ```
 
 ## About XantoI2C
-
 Software I2C-master implementation.
 
 Features:
@@ -47,13 +46,13 @@ Features:
 for example when you have too long wires, capacitors, amplifiers or repeaters on the line,
 or if you just use a barbed wires instead of copper wires.
 
-![Timings diagram ](https://github.com/xantorohara/XantoI2C/raw/master/extras/XantoI2C-timings.png?raw=true)
+## Timings diagram
+![Timings diagram](https://github.com/xantorohara/XantoI2C/raw/master/extras/XantoI2C-timings.png?raw=true)
 
 Serial Data Line (SDA) and Serial Clock Line (SCL)
 
 
 ## Bus Speed
-
 XantoI2C uses delays with microsecond precision, so the bus speed will
 not be exactly the same as specified in the constructor, it will be a bit slowly.
 
@@ -80,7 +79,6 @@ Actually, many chips don't require strict speed for I2C communucation.
 They declare maximal or nominal speed, but can operate on much lower speeds.
 
 ## Class API
-
 ```cpp
 
 /**
@@ -156,13 +154,11 @@ uint8_t doStartWriteAckStop(uint8_t data_bytes[], uint8_t data_length);
 ```
 
 ### Sample: create instance of the I2C bus
-
 ```cpp
 XantoI2C i2c(PIN_SCL, PIN_SDA);
 
 ```
 ### Sample: using a helper method
-
 ```cpp
 
   i2c.doStartWriteAckStop(0x77);
@@ -216,3 +212,6 @@ XantoTM1637 uses XantoI2C library for I2C communications with TM1637 chip.
 * [I2C Bus Events](http://www.esacademy.com/en/library/technical-articles-and-documents/miscellaneous/i2c-bus/i2c-bus-events)
 * :blue_book: [TM1637 datasheeet (English version)](http://xantorohara.github.io/datasheets/TM1637_V2.4_EN.pdf)
 * :blue_book: [KT0803L datasheeet](http://xantorohara.github.io/datasheets/KT0803L.pdf)
+
+## Author
+Xantorohara <xantorohara@gmail.com>, @xantorohara
