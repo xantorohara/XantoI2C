@@ -1,16 +1,49 @@
-# XantoI2C
+# XantoI2C 
+## :construction: Work in progress :construction:
 
 Software I2C library implementation for Arduino
 
-:construction: Work in progress :construction:
+## Quick start
+1. Download this library [XantoI2C-master.zip](https://github.com/xantorohara/XantoI2C/archive/master.zip)
+2. Install the library (for example, via Arduino IDE: Sketch -> Include Library -> Add .ZIP Library...)
+3. Write code that you need to interact with your chip using XantoI2C
+
+This dummy example demonstrates basic usage of the library:
+
+```cpp
+#include <XantoI2C.h>
+
+const uint8_t PIN_SCL = 5;
+const uint8_t PIN_SDA = 6;
+const uint8_t SOME_CHIP_COMMAND = 0x77;
+
+XantoI2C i2c(PIN_SCL, PIN_SDA);
+
+void sendSomeCommand() {
+  i2c.start();
+  i2c.writeByte(SOME_CHIP_COMMAND);
+
+  if (i2c.readAck()) {
+    return;
+  }
+  i2c.stop();
+}
+
+void setup() {
+  sendSomeCommand();
+}
+
+void loop() {
+}
+```
 
 Serial Data Line (SDA) and Serial Clock Line (SCL)
 
 ![Timings diagram ](https://github.com/xantorohara/XantoI2C/raw/master/extras/XantoI2C-timings.png?raw=true)
 
-## Class API
+## XantoI2C Class API
 
-### XantoI2C class methods
+### Class methods
 
 ```cpp
 
