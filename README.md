@@ -205,7 +205,7 @@ i2c.stop();
 
 ```
 ## I2C devices
-- [ ] A lot of different I2C modules and displays you can find and order in 
+A lot of different I2C modules and displays you can find and order in 
 [AliExpress](http://s.click.aliexpress.com/e/RZzf23vz3)
 
 ## Examples
