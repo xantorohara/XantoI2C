@@ -205,7 +205,8 @@ i2c.stop();
 
 ```
 ## I2C devices
-- [ ] TODO
+- [ ] A lot of different I2C modules and displays you can find and order in 
+[AliExpress](http://s.click.aliexpress.com/e/RZzf23vz3)
 
 ## Examples
 * [XantoI2C_TM1637_Counter](https://github.com/xantorohara/XantoI2C/tree/master/examples/XantoI2C_TM1637_Counter) - example 
