@@ -1,7 +1,5 @@
-#include <Arduino.h>
-
 #include "XantoI2C.h"
-#include "Math.h"
+#include <Math.h>
 
 XantoI2C::XantoI2C(uint8_t clock_pin, uint8_t data_pin, uint16_t pulse_time_us, uint16_t delay_time_us):
   clock_pin(clock_pin), data_pin(data_pin), pulse_time_us(pulse_time_us), delay_time_us(delay_time_us) {
