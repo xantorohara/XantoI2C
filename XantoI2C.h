@@ -10,8 +10,8 @@
  * - http://i2c.info/i2c-bus-specification
  * - http://www.i2c-bus.org/repeated-start-condition
  * - http://www.esacademy.com/en/library/technical-articles-and-documents/miscellaneous/i2c-bus/i2c-bus-events
- * - TM1637 datasheeet
- * - KT0803L datasheet
+ * - TM1637 datasheet http://xantorohara.github.io/datasheets/TM1637_V2.4_EN.pdf
+ * - KT0803L datasheet http://xantorohara.github.io/datasheets/KT0803L.pdf
  *
  * Bus Speed:
  * ----------
@@ -57,7 +57,6 @@
 #define XANTO_I2C
 
 #include <Arduino.h>
-
 
 class XantoI2C {
   private:

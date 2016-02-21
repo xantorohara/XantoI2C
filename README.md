@@ -3,7 +3,7 @@ Software I2C library implementation for Arduino
 
 
 ## Quick start
-1. Download this library: [XantoI2C-master.zip](https://github.com/xantorohara/XantoI2C/archive/master.zip)
+1. Download XantoI2C library: [XantoI2C-master.zip](https://github.com/xantorohara/XantoI2C/archive/master.zip)
 2. Install the library (for example, via Arduino IDE: Sketch -> Include Library -> Add .ZIP Library...)
 3. Write code that you need to interact with your chip using XantoI2C
 
@@ -121,7 +121,7 @@ void stop();
 
 /**
  * For each clock pulse one bit of data is transferred.
- * The SDA signal can only change when the SCL signal is low �
+ * The SDA signal can only change when the SCL signal is low
  * when the clock is high the data should be stable.
  */
 void writeByte(uint8_t data_byte);
@@ -209,9 +209,10 @@ A lot of different I2C modules and displays for Arduino you can find and order i
 [AliExpress](http://s.click.aliexpress.com/e/RZzf23vz3)
 
 ## Examples
-* [XantoI2C_TM1637_Counter](https://github.com/xantorohara/XantoI2C/tree/master/examples/XantoI2C_TM1637_Counter) - example 
-how to drive a 4-digit LED display module using XantoI2C
-* [XantoI2C_KT0803L_Registers](https://github.com/xantorohara/XantoI2C/tree/master/examples/XantoI2C_KT0803L_Registers) - 
+* [XantoI2C_TM1637_Counter](https://github.com/xantorohara/XantoI2C/tree/master/examples/XantoI2C_TM1637_Counter) -
+example how to drive a 4-digit LED display module using XantoI2C
+
+* [XantoI2C_KT0803L_Registers](https://github.com/xantorohara/XantoI2C/tree/master/examples/XantoI2C_KT0803L_Registers) -
 example how to read all registers from the KT0803L chip (FM transmitter module)
 
 
@@ -224,8 +225,8 @@ XantoTM1637 uses XantoI2C library for I2C communications with TM1637 chip.
 * [I2C Bus Specification](http://i2c.info/i2c-bus-specification)
 * [I2C-Bus](http://www.i2c-bus.org)
 * [I2C Bus Events](http://www.esacademy.com/en/library/technical-articles-and-documents/miscellaneous/i2c-bus/i2c-bus-events)
-* :blue_book: [TM1637 datasheeet (English version)](http://xantorohara.github.io/datasheets/TM1637_V2.4_EN.pdf)
-* :blue_book: [KT0803L datasheeet](http://xantorohara.github.io/datasheets/KT0803L.pdf)
+* :blue_book: [TM1637 datasheet (English version)](http://xantorohara.github.io/datasheets/TM1637_V2.4_EN.pdf)
+* :blue_book: [KT0803L datasheet](http://xantorohara.github.io/datasheets/KT0803L.pdf)
 
 
 ## Author
