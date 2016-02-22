@@ -90,8 +90,15 @@ void XantoI2C::writeByte(uint8_t data_byte) {
 uint8_t XantoI2C::readBit() {
   uint8_t out_bit;
   delayMicroseconds(delay_time_us);
+
+  digitalWrite(clock_pin, HIGH);
+  delayMicroseconds(delay_time_us);
+
   out_bit = digitalRead(data_pin);
-  clockPulse();
+
+  digitalWrite(clock_pin, LOW);
+  delayMicroseconds(delay_time_us);
+
   return out_bit;
 }
 
