@@ -48,9 +48,6 @@ Features:
 * No ASM, no magic, just plain clear code corresponding to the timing diagram
 * It can communicate with I2C chips using any Arduino's pins, not only those that are marked as SDA and SCL,
 so you can connect many more I2C devices to the Arduino at the same time.
-* It can be configured to work with unusual latency or propagation time,
-for example when you have too long wires, capacitors, amplifiers or repeaters on the line,
-or if you just use a barbed wires instead of copper wires
 
 
 ## Timings diagram
@@ -74,6 +71,7 @@ List of supported speeds:
 * Delay=8us, speed=31kHz
 * Delay=9us, speed=27kHz
 * Delay=10us, speed=25kHz
+
 ... delays more than 10 microsecond are also possible.
 
 Actually, many chips don't require strict speed for I2C communucation.
@@ -165,27 +163,26 @@ i2c.doStartWriteAckStop(0x77);
 i2c.start();
 
 i2c.writeByte(KT0803_CMD_WRITE);
-
 if (i2c.readAck()) {
-return 0;
+  return 0;
 }
 
 i2c.writeByte(register_address);
-
 if (i2c.readAck()) {
-return 0;
+  return 0;
 }
 
 i2c.start();
+
 i2c.writeByte(KT0803_CMD_READ);
 if (i2c.readAck()) {
-return 0;
+  return 0;
 }
 uint8_t register_value = i2c.readByte();
-
 if (i2c.readNack()) {
-return 0;
+  return 0;
 }
+
 i2c.stop();
 
 ```
