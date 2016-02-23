@@ -8,11 +8,8 @@
 
 #include "XantoI2C.h"
 
-#ifdef DEBUG
 #define XANTO_DEBUG_PRINT(message) (Serial.print(message))
-#else
 #define XANTO_DEBUG_PRINT
-#endif
 
 const uint8_t PIN_SCL = 8;
 const uint8_t PIN_SDA = 9;
@@ -20,7 +17,7 @@ const uint8_t PIN_SDA = 9;
 const uint8_t KT0803_CMD_WRITE = 0x7C;
 const uint8_t KT0803_CMD_READ = 0x7D;
 
-XantoI2C i2c(PIN_SCL, PIN_SDA, 400);
+XantoI2C i2c(PIN_SCL, PIN_SDA, 1);
 
 void setup() {
   Serial.begin(9600);

@@ -2,7 +2,7 @@
  * XantoI2C
  * Software I2C library implementation for Arduino
  *
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: Xantorohara <xantorohara@gmail.com>
  *
  * References:
@@ -15,28 +15,20 @@
  *
  * Bus Speed:
  * ----------
- * XantoI2C uses delays with microsecond precision, so the bus speed will
- * not be exactly the same as specified in the constructor, it will be slowly.
+ * XantoI2C uses delays with a microsecond precision to generate clock and data signals.
  *
- * Here are some samples of speed ranges:
- *
- * 1kHz - pulse=500us,delay=250us
- * 2kHz - pulse=250us,delay=125us
- * 5kHz - pulse=100us,delay=50us
- * 10kHz - pulse=50us,delay=25us
- * 25-26kHz - pulse=20us,delay=10us
- * 50-55kHz - pulse=10us,delay=5us
- * 56-62kHz - pulse=9us,delay=5us
- * 63-71kHz - pulse=8us,delay=4us
- * 72-83kHz - pulse=7us,delay=4us
- * 84-99kHz - pulse=6us,delay=3us
- * 100-124kHz - pulse=5us,delay=3us
- * 125-166kHz - pulse=4us,delay=2us
- * 167-249kHz - pulse=3us,delay=2us
- * 250-499kHz - pulse=2us,delay=1us
- * >500kHz - pulse=1us, delay=1us
- *
- * I.e. if you specify speed as 120kHz or 110kHz or 101kHz it will be reduced to 100kHz.
+ * List of supported speeds:
+ * Delay=1us, speed=250kHz
+ * Delay=2us, speed=125kHz
+ * Delay=3us, speed=83kHz
+ * Delay=4us, speed=62kHz
+ * Delay=5us, speed=50kHz
+ * Delay=6us, speed=41kHz
+ * Delay=7us, speed=35kHz
+ * Delay=8us, speed=31kHz
+ * Delay=9us, speed=27kHz
+ * Delay=10us, speed=25kHz
+ * ... delays more than 10us are also possible.
  *
  * Actually, many chips don't require strict speed for I2C communucation.
  * They declare maximal or nominal speed, but can operate on much lower speeds.
@@ -63,11 +55,6 @@ class XantoI2C {
     uint8_t clock_pin, data_pin;
 
     /**
-     * Initialize SCL and SDA lines
-     */
-    void init();
-
-    /**
      * Clock pulse
      */
     void clockPulse();
@@ -77,27 +64,24 @@ class XantoI2C {
      */
     uint8_t readBit();
 
+    void sclHi();
+    void sdaHi();
+    void sclLo();
+    void sdaLo();
+    void i2cDelay();
+
   public:
-    uint16_t pulse_time_us, delay_time_us;
+    uint16_t delay_time_us;
 
     /**
      * Create a new I2C bus with the given speed
      *
      * clock_pin - any digital pin for SCL line
      * data_pin - any digital pin for SDA line
-     * speed - bus speed in kilohertz (see "Bus Speed" section for speed explanations)
+     * delay_time_us - time of signal propagation, (quarter of the clock time)
+     * see Bus Speed section
      */
-    XantoI2C(uint8_t clock_pin, uint8_t data_pin, uint16_t speed_kHz = 100);
-
-    /**
-     * Create a new I2C bus with the given delay times
-     *
-     * clock_pin - any digital pin for SCL line
-     * data_pin - any digital pin for SDA line
-     * pulse_time_us - time when clock pulse is HIGH
-     * delay_time_us - time of signal propagation, actually it is a half of a pulse time
-     */
-    XantoI2C(uint8_t clock_pin, uint8_t data_pin, uint16_t pulse_time_us, uint16_t delay_time_us);
+    XantoI2C(uint8_t clock_pin, uint8_t data_pin, uint16_t delay_time_us = 2);
 
     /**
      * Start Condition (or Repeated Start Condition)
@@ -113,7 +97,7 @@ class XantoI2C {
 
     /**
      * For each clock pulse one bit of data is transferred.
-     * The SDA signal can only change when the SCL signal is low –
+     * The SDA signal can only change when the SCL signal is low
      * when the clock is high the data should be stable.
      */
     void writeByte(uint8_t data_byte);
@@ -134,11 +118,6 @@ class XantoI2C {
     * Return 0 if NACK was received, else 1
     */
     uint8_t readNack();
-
-    /**
-     * Pull both lines down, switch I2C communication off
-     */
-    void off();
 
     /**
      * Execute scenario: start, write, ack and stop

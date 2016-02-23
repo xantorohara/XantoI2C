@@ -89,22 +89,12 @@
             <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#DADADA" stroke-width="1"/>
         </pattern>
 
-        <g id="pt" class="dim">
-            <path d="M 1 0 h 18"/>
-
-            <path d="M 3 -1 l -2 1 l 2 1"/>
-            <path d="M 17 -1 l 2 1 l -2 1"/>
-
-            <text x="10" y="-1">pt</text>
-        </g>
-
         <g id="dt" class="dim">
             <path d="M 0 0 h 10"/>
             <path d="M 2 -1 l -2 1 l 2 1"/>
             <path d="M 8 -1 l 2 1 l -2 1"/>
             <text x="5" y="-1">dt</text>
         </g>
-
     </defs>
 
     <rect width="100%" height="100%" fill="url(#grid)"/>
@@ -125,10 +115,7 @@
             <path class="sda" d="M 20 20 h40 v20 h40"/>
             <path class="scl" d="M 20 50 h60 v20 h20"/>
 
-            <use xlink:href="#dt" x="30" y="47"/>
-            <use xlink:href="#pt" x="40" y="47"/>
-            <use xlink:href="#pt" x="60" y="47"/>
-            <use xlink:href="#pt" x="80" y="47"/>
+            <use xlink:href="#dt" x="100" y="47"/>
 
         </g>
 
@@ -150,10 +137,6 @@
             <path class="sda" d="M 0 40 v-20h40 v20h40 v-20h40 v20h40  v-20h40 v2v-2h40 v20h40 v-2v2h40"/>
             <path class="scl"
                   d="M 0 70 h10 v-20h20v20h20 v-20h20v20h20 v-20h20v20h20 v-20h20v20h20 v-20h20v20h20 v-20h20v20h20 v-20h20v20h20 v-20h20v20h10"/>
-
-            <use xlink:href="#dt" x="0" y="47"/>
-            <use xlink:href="#pt" x="10" y="47"/>
-            <use xlink:href="#dt" x="30" y="47"/>
         </g>
 
         <g name="ack" transform="translate(420, 0)">
@@ -166,9 +149,6 @@
             <path name="ack" class="sda" d="M 40 40 h-2"/>
 
             <path name="ack" class="scl" d="M 0 70 h10 v-20h20v20h20"/>
-            <use xlink:href="#dt" x="0" y="47"/>
-            <use xlink:href="#pt" x="10" y="47"/>
-            <use xlink:href="#dt" x="30" y="47"/>
         </g>
 
         <g name="stop" transform="translate(460, 0)">
@@ -179,11 +159,6 @@
 
             <path name="stop" class="sda" d="M 0 40 h40 v-20h30"/>
             <path name="stop" class="scl" d="M 0 70 h20 v-20h50"/>
-
-            <use xlink:href="#pt" x="0" y="47"/>
-            <use xlink:href="#pt" x="20" y="47"/>
-            <use xlink:href="#pt" x="40" y="47"/>
-
         </g>
     </g>
 
@@ -201,11 +176,6 @@
 
             <path name="start" class="sda" d="M 20 40 h10 v-20 h30 v20 h40"/>
             <path name="start" class="scl" d="M 20 70 h20 v-20 h40 v20 h20"/>
-
-            <use xlink:href="#dt" x="30" y="47"/>
-            <use xlink:href="#pt" x="40" y="47"/>
-            <use xlink:href="#pt" x="60" y="47"/>
-            <use xlink:href="#pt" x="80" y="47"/>
         </g>
 
         <g name="ack" transform="translate(420, 0)">
@@ -215,11 +185,7 @@
             </g>
 
             <path name="ackSlave" class="sda slave" d="M -2 20 v20 h40 v-20"/>
-
             <path name="ack" class="scl" d="M 0 70 h10 v-20h20v20h20"/>
-            <use xlink:href="#dt" x="0" y="47"/>
-            <use xlink:href="#pt" x="10" y="47"/>
-            <use xlink:href="#dt" x="30" y="47"/>
         </g>
 
         <g name="stop" transform="translate(460, 0)">
@@ -230,11 +196,6 @@
 
             <path name="stop" class="sda" d="M 0 20 v20 h40 v-20h30"/>
             <path name="stop" class="scl" d="M 0 70 h20 v-20h50"/>
-
-            <use xlink:href="#pt" x="0" y="47"/>
-            <use xlink:href="#pt" x="20" y="47"/>
-            <use xlink:href="#pt" x="40" y="47"/>
-
         </g>
 
     </g>
@@ -253,16 +214,9 @@
 
             <path name="start" class="sda" d="M 20 20 h40 v20 h40"/>
             <path name="start" class="scl" d="M 20 70 h20 v-20 h40 v20 h20"/>
-
-            <use xlink:href="#dt" x="30" y="47"/>
-            <use xlink:href="#pt" x="40" y="47"/>
-            <use xlink:href="#pt" x="60" y="47"/>
-            <use xlink:href="#pt" x="80" y="47"/>
-
         </g>
     </g>
 
     <text class="copyright" x="455" y="5" style="">XantoI2C &#169;Xantorohara</text>
-
 
 </svg>
