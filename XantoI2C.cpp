@@ -21,14 +21,14 @@ void XantoI2C::sdaHi() {
 }
 
 void XantoI2C::sclLo() {
-  pinMode(clock_pin, OUTPUT);
   digitalWrite(clock_pin, LOW);
+  pinMode(clock_pin, OUTPUT);
   i2cDelay();
 }
 
 void XantoI2C::sdaLo() {
-  pinMode(data_pin, OUTPUT);
   digitalWrite(data_pin, LOW);
+  pinMode(data_pin, OUTPUT);
   i2cDelay();
 }
 
