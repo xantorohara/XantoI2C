@@ -212,8 +212,8 @@ XantoKT0803 uses XantoI2C library for I2C communications with a KT0803 chip.
 * [I2C Bus Specification](http://i2c.info/i2c-bus-specification)
 * [I2C-Bus](http://www.i2c-bus.org)
 * [I2C Bus Events](http://www.esacademy.com/en/library/technical-articles-and-documents/miscellaneous/i2c-bus/i2c-bus-events)
-* :blue_book: [TM1637 datasheet (English version)](http://xantorohara.github.io/datasheets/TM1637_V2.4_EN.pdf)
-* :blue_book: [KT0803L datasheet](http://xantorohara.github.io/datasheets/KT0803L.pdf)
+* :blue_book: [TM1637 datasheet (English version)](http://xantorohara.github.io/datasheets#TM1637)
+* :blue_book: [KT0803L datasheet](http://xantorohara.github.io/datasheets#KT0803L)
 
 
 ## Author
