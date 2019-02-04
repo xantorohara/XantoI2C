@@ -187,8 +187,8 @@ i2c.stop();
 
 ```
 ## I2C devices
-A lot of different I2C modules and displays for Arduino you can find and order in 
-[AliExpress](http://s.click.aliexpress.com/e/RZzf23vz3)
+
+[![Aliexpress](https://github.com/xantorohara/XantoI2C/raw/master/extras/i2c.jpg?raw=true)](http://s.click.aliexpress.com/e/RZzf23vz3)
 
 ## Examples
 * [XantoI2C_TM1637_Counter](https://github.com/xantorohara/XantoI2C/tree/master/examples/XantoI2C_TM1637_Counter) -
