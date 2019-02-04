@@ -53,7 +53,7 @@ so you can connect many more I2C devices to the Arduino at the same time.
 ## Timings diagram
 This pictures demonstrates some I2C cases. Also it shows signal timings (pulse time, delay time). 
  
-![Timings diagram](https://github.com/xantorohara/XantoI2C/raw/master/extras/XantoI2C-timings.png?raw=true)
+[![Timings diagram](https://github.com/xantorohara/XantoI2C/raw/master/extras/XantoI2C-timings.png?raw=true)](https://xantorohara.github.io/signal-editor/)
 
 
 ## Bus Speed
@@ -199,11 +199,11 @@ example how to read all registers from the KT0803L chip (FM transmitter module)
 
 
 ## Related projects
-* [XantoTM1637](https://github.com/xantorohara/XantoTM1637) - 
+* [XantoTM1637](https://xantorohara.github.io/XantoTM1637/) - 
 Arduino library for TM1637-based 4-digit display module.
 XantoTM1637 uses XantoI2C library for I2C communications with a TM1637 chip.
 
-* [XantoKT0803](https://github.com/xantorohara/XantoKT0803) - 
+* [XantoKT0803](https://xantorohara.github.io/XantoKT0803/) - 
 Arduino library for KT0803-based FM radio transmitter.
 XantoKT0803 uses XantoI2C library for I2C communications with a KT0803 chip.
 
@@ -212,8 +212,6 @@ XantoKT0803 uses XantoI2C library for I2C communications with a KT0803 chip.
 * [I2C Bus Specification](http://i2c.info/i2c-bus-specification)
 * [I2C-Bus](http://www.i2c-bus.org)
 * [I2C Bus Events](http://www.esacademy.com/en/library/technical-articles-and-documents/miscellaneous/i2c-bus/i2c-bus-events)
-* :blue_book: [TM1637 datasheet (English version)](http://xantorohara.github.io/datasheets#TM1637)
-* :blue_book: [KT0803L datasheet](http://xantorohara.github.io/datasheets#KT0803L)
 
 
 ## Author
