@@ -59,13 +59,17 @@ void XantoI2C::clockPulse() {
 
 void XantoI2C::writeByte(uint8_t data_byte) {
   for (uint8_t i = 0; i < 8; i++) {
-    if (bitRead(data_byte, 7 - i)) {
+    writeBit(bitRead(data_byte, 7 - i));
+  }
+}
+
+void XantoI2C::writeBit(bool data_bit) {
+    if ( data_bit ) {
       sdaHi();
     } else {
       sdaLo();
     }
     clockPulse();
-  }
 }
 
 uint8_t XantoI2C::readBit() {
@@ -103,6 +107,14 @@ uint8_t XantoI2C::readAck() {
 uint8_t XantoI2C::readNack() {
   sdaHi();
   return readBit() == 1 ? 0 : 1;
+}
+
+void XantoI2C::writeAck() {
+  writeBit(false);
+}
+
+void XantoI2C::writeNack() {
+  writeBit(true);
 }
 
 /**
