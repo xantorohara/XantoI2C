@@ -67,7 +67,7 @@ class XantoI2C {
     /**
      * Write one bit of data to a slave
      */
-	void writeBit(bool data_bit);
+    void writeBit(bool data_bit);
 
     void sclHi();
     void sdaHi();
