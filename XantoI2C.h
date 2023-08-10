@@ -64,6 +64,11 @@ class XantoI2C {
      */
     uint8_t readBit();
 
+    /**
+     * Write one bit of data to a slave
+     */
+    void writeBit(bool data_bit);
+
     void sclHi();
     void sdaHi();
     void sclLo();
@@ -118,6 +123,16 @@ class XantoI2C {
     * Return 0 if NACK was received, else 1
     */
     uint8_t readNack();
+
+    /**
+     * Write Acknowledge to a slave
+     */
+    void writeAck();
+
+    /**
+    * Write No Acknowledge to a slave
+    */
+    void writeNack();
 
     /**
      * Execute scenario: start, write, ack and stop

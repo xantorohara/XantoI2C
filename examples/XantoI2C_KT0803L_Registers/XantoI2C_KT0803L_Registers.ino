@@ -53,22 +53,12 @@ uint8_t readRegister(uint8_t register_address) {
   i2c.writeByte(KT0803_CMD_READ);
   XANTO_DEBUG_PRINT("write3 ");
 
-  if (i2c.readAck()) {
-    XANTO_DEBUG_PRINT("ack3 failed ");
-    return 0;
-  } else {
-    XANTO_DEBUG_PRINT("ack3 ");
-  }
+  i2c.writeAck();
 
   uint8_t register_value = i2c.readByte();
   XANTO_DEBUG_PRINT("read ");
 
-  if (i2c.readNack()) {
-    XANTO_DEBUG_PRINT("nack failed ");
-    return 0;
-  } else {
-    XANTO_DEBUG_PRINT("nack ");
-  }
+  i2c.writeNack();
 
   i2c.stop();
   XANTO_DEBUG_PRINT("stop\n");
